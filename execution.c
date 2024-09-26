@@ -20,6 +20,9 @@ void execute_stack_instruction(char *opcode, stack_t **stack,
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
