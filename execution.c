@@ -4,12 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+  * execute_stack_instruction - parse the commands and call the fun
+  *
+  * @opcode: char array to the operatio code
+  * @stack: pointer to the stack
+  * @line_num: command line number
+  * Return: Always 0 (Success)
+  */
 void execute_stack_instruction(char *opcode, stack_t **stack,
 		unsigned int line_num)
 {
 	instruction_t instruction[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
