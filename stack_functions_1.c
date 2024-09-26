@@ -106,3 +106,67 @@ void pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(temp);
 }
+
+/**
+  * swap - remove top element from stack
+  *
+  * @stack: stack pointer
+  * @line_number: the command line number
+  * Return: void
+  */
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+        stack_t *temp = NULL;
+
+        if (*stack == NULL)
+        {
+                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+        temp = *stack;
+        *stack = (*stack)->next;
+        if (*stack != NULL)
+                (*stack)->prev = NULL;
+        free(temp);
+}
+
+/**
+  * add - remove top element from stack
+  *
+  * @stack: stack pointer
+  * @line_number: the command line number
+  * Return: void
+  */
+
+void add(stack_t **stack, unsigned int line_number)
+{
+        stack_t *temp = NULL;
+
+        if (*stack == NULL)
+        {
+                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+        temp = *stack;
+        *stack = (*stack)->next;
+        if (*stack != NULL)
+                (*stack)->prev = NULL;
+        free(temp);
+}
+
+/**
+  * nop - remove top element from stack
+  *
+  * @stack: stack pointer
+  * @line_number: the command line number
+  * Return: void
+  */
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) line_number;
+	(void) stack;
+
+	exit(EXIT_SUCCESS);
+}
