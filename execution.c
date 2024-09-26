@@ -19,6 +19,7 @@ void execute_stack_instruction(char *opcode, stack_t **stack,
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 
