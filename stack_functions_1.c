@@ -108,7 +108,7 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
-  * swap - remove top element from stack
+  * swap - swap top two elements from stack
   *
   * @stack: stack pointer
   * @line_number: the command line number
@@ -117,22 +117,21 @@ void pop(stack_t **stack, unsigned int line_number)
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-        stack_t *temp = NULL;
+	stack_t *temp = NULL;
 
-        if (*stack == NULL)
-        {
-                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-                exit(EXIT_FAILURE);
-        }
-        temp = *stack;
-        *stack = (*stack)->next;
-        if (*stack != NULL)
-                (*stack)->prev = NULL;
-        free(temp);
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	(*stack)->next = temp;	
 }
 
 /**
-  * add - remove top element from stack
+  * add - add top two element from stack
   *
   * @stack: stack pointer
   * @line_number: the command line number
@@ -141,18 +140,18 @@ void swap(stack_t **stack, unsigned int line_number)
 
 void add(stack_t **stack, unsigned int line_number)
 {
-        stack_t *temp = NULL;
+	int first_elem;
+	int second_elem;
 
-        if (*stack == NULL)
-        {
-                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-                exit(EXIT_FAILURE);
-        }
-        temp = *stack;
-        *stack = (*stack)->next;
-        if (*stack != NULL)
-                (*stack)->prev = NULL;
-        free(temp);
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+ 		exit(EXIT_FAILURE);
+	}
+	first_elem = (*stack)->n;
+	pop(stack, line_number);
+	second_elem = first_elem + (*stack)->n;
+	(*stack)->n = second_elem;
 }
 
 /**
